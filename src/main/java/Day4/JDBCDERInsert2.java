@@ -14,6 +14,8 @@ public class JDBCDERInsert2 {
         String query = " insert into jobs values (?,?,?,?)";
         while (true) {
             try (Connection conn = DriverManager.getConnection(url);) {
+                conn.setAutoCommit(false);
+
                 PreparedStatement st = conn.prepareStatement(query);
                 System.out.println("Enter job_id");
                 int jobID = sc.nextInt();
